@@ -52,7 +52,6 @@ async function main() {
       { Type: "Result", Message: "external", Timestamp: "2026-04-22 17:50:30" },
       { Type: "Result", Message: "project-review", Timestamp: "2026-04-22 17:50:18" },
       { Type: "Result", Message: "project-review", Timestamp: "2026-04-22 17:49:54" },
-
       { Type: "Event", Message: "farewell", Timestamp: "2026-04-22 17:51:06" },
       { Type: "Event", Message: "tech-fest", Timestamp: "2026-04-22 17:50:06" }
     ];
