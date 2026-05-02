@@ -39,7 +39,7 @@ function App() {
     setData(res);
   };
 
-  // Sort by priority + timestamp
+  
   const sorted = [...data].sort((a, b) => {
     if (priorityMap[b.Type] !== priorityMap[a.Type]) {
       return priorityMap[b.Type] - priorityMap[a.Type];
@@ -47,10 +47,10 @@ function App() {
     return new Date(b.Timestamp) - new Date(a.Timestamp);
   });
 
-  // Filter
+  
   const filtered = filter ? sorted.filter(n => n.Type === filter) : sorted;
 
-  // Pagination
+  
   const itemsPerPage = 5;
   const paginated = filtered.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 

@@ -7,7 +7,7 @@ export const fetchNotifications = async () => {
     const res = await axios.get(API_URL);
     return res.data.notifications;
   } catch {
-    // fallback (same as Stage 1 data)
+   
     return [
       { Type: "Placement", Message: "CSX Corporation hiring", Timestamp: "2026-04-22 17:51:18" },
       { Type: "Placement", Message: "Advanced Micro Devices Inc. hiring", Timestamp: "2026-04-22 17:49:42" },
