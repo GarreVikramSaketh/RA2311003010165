@@ -25,21 +25,20 @@ function App() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    Log("frontend", "info", "page", "App loaded");
+    Log("frontend", "info", "page", "app loaded");
     loadData();
   }, []);
 
   const loadData = async () => {
-    Log("frontend", "info", "api", "Fetching notifications");
+    Log("frontend", "info", "api", "fetching notifications");
 
     const res = await fetchNotifications();
 
-    Log("frontend", "info", "api", "Notifications fetched");
+    Log("frontend", "info", "api", "notifications fetched");
 
     setData(res);
   };
 
-  
   const sorted = [...data].sort((a, b) => {
     if (priorityMap[b.Type] !== priorityMap[a.Type]) {
       return priorityMap[b.Type] - priorityMap[a.Type];
@@ -47,17 +46,14 @@ function App() {
     return new Date(b.Timestamp) - new Date(a.Timestamp);
   });
 
-  
   const filtered = filter ? sorted.filter(n => n.Type === filter) : sorted;
 
-  
   const itemsPerPage = 5;
   const paginated = filtered.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   return (
     <Container maxWidth="md">
 
-      {/* Priority Section */}
       <Typography variant="h4" gutterBottom>
         Priority Notifications
       </Typography>
@@ -72,7 +68,6 @@ function App() {
         </Card>
       ))}
 
-      {/* All Notifications */}
       <Box mt={4}>
         <Typography variant="h4" gutterBottom>
           All Notifications
@@ -81,7 +76,7 @@ function App() {
         <Select
           value={filter}
           onChange={(e) => {
-            Log("frontend", "info", "state", "Filter changed");
+            Log("frontend", "info", "state", "filter changed");
             setFilter(e.target.value);
             setPage(1);
           }}
@@ -103,13 +98,12 @@ function App() {
           </Card>
         ))}
 
-        {/* Pagination */}
         <Box display="flex" justifyContent="space-between" mt={2}>
           <Button
             variant="contained"
             disabled={page === 1}
             onClick={() => {
-              Log("frontend", "info", "state", "Previous page clicked");
+              Log("frontend", "info", "state", "previous page clicked");
               setPage(page - 1);
             }}
           >
@@ -119,7 +113,7 @@ function App() {
           <Button
             variant="contained"
             onClick={() => {
-              Log("frontend", "info", "state", "Next page clicked");
+              Log("frontend", "info", "state", "next page clicked");
               setPage(page + 1);
             }}
           >
