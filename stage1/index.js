@@ -20,7 +20,6 @@ async function main() {
 
     await Log("backend", "info", "service", "notifications fetched");
 
-    // Sort by priority + latest timestamp
     notifications.sort((a, b) => {
       if (priorityMap[b.Type] !== priorityMap[a.Type]) {
         return priorityMap[b.Type] - priorityMap[a.Type];
@@ -44,12 +43,20 @@ async function main() {
     console.log("API failed → using fallback data");
 
     const notifications = [
-      { Type: "Placement", Message: "Afford Medical hiring", Timestamp: "2026-04-22 17:51:18" },
-      { Type: "Result", Message: "Mid-sem results", Timestamp: "2026-04-22 17:51:30" },
-      { Type: "Event", Message: "Farewell event", Timestamp: "2026-04-22 17:51:06" }
+      { Type: "Placement", Message: "CSX Corporation hiring", Timestamp: "2026-04-22 17:51:18" },
+      { Type: "Placement", Message: "Advanced Micro Devices Inc. hiring", Timestamp: "2026-04-22 17:49:42" },
+
+      { Type: "Result", Message: "mid-sem", Timestamp: "2026-04-22 17:51:30" },
+      { Type: "Result", Message: "mid-sem", Timestamp: "2026-04-22 17:50:54" },
+      { Type: "Result", Message: "project-review", Timestamp: "2026-04-22 17:50:42" },
+      { Type: "Result", Message: "external", Timestamp: "2026-04-22 17:50:30" },
+      { Type: "Result", Message: "project-review", Timestamp: "2026-04-22 17:50:18" },
+      { Type: "Result", Message: "project-review", Timestamp: "2026-04-22 17:49:54" },
+
+      { Type: "Event", Message: "farewell", Timestamp: "2026-04-22 17:51:06" },
+      { Type: "Event", Message: "tech-fest", Timestamp: "2026-04-22 17:50:06" }
     ];
 
-    // Same sorting logic
     notifications.sort((a, b) => {
       if (priorityMap[b.Type] !== priorityMap[a.Type]) {
         return priorityMap[b.Type] - priorityMap[a.Type];
@@ -60,7 +67,7 @@ async function main() {
     console.log("\nTop Notifications (Fallback):\n");
 
     notifications.forEach((n, i) => {
-      console.log(`${i + 1}. [${n.Type}] ${n.Message}`);
+      console.log(`${i + 1}. [${n.Type}] ${n.Message} (${n.Timestamp})`);
     });
   }
 }

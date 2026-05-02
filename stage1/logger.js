@@ -11,7 +11,6 @@ async function Log(stack, level, pkg, message) {
       message
     });
   } catch (error) {
-    // Do NOT crash program if logging fails
     console.log("Log failed (expected in test)");
   }
 }
